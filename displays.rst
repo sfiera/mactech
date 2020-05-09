@@ -413,6 +413,31 @@ mode:
    * * Back porch
      * 19px
 
+Adapters
+--------
+
+Generic adapter
+~~~~~~~~~~~~~~~
+
+.. image:: images/display-adapter.svg
+
+For a VGA adapter:
+
+1. Omit the dip switches and diodes.
+2. Wire Sense1 and Sense2 (DA-15 pins 7 and 10) together directly.
+
+For a multi-scan adapter:
+
+1. Omit the dip switches.
+2. Wire VGAGnd and Sense0 (D-15 pin 4 and ground) together directly.
+3. Wire diodes between Sense1 and Sense2 (DA-15 pins 7 and 10) according
+   to the maximum resolution of the monitor:
+
+   * 1152×870: cathode on Sense1 (DA-15 pin 7)
+   * 1024×768: cathode on Sense2 (DA-15 pin 10)
+   * 800×600: two diodes, both ways
+   * 640×480: no diodes
+
 See Also
 --------
 
