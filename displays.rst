@@ -150,31 +150,37 @@ yielding 8 (2³) possible combinations:
 
    * * Size
      * 12”
+     * 13” 16-bit [#16bit]_
      * 13”
      * Portrait [#portrait]_
      * 21” [#21]_
    * * Visible area
      * 512×384
+     * 640×400
      * 640×480
      * 640×870
      * 1152×870
    * * Total area
      * 704×370
      * 864×525
-     * ?
+     * 864×525
+     * 832×918
      * 1456×915
    * * Scan rate
      * 60.15 Hz
-     * 66.7 Hz
+     * 66.67 Hz
+     * 66.67 Hz
      * 75 Hz
      * 75 Hz
    * * Line rate
      * 24.48 kHz [#24.48]_
+     * 35.0 kHz
      * 35.00 kHz
      * 68.9 kHz
      * 68.68 kHz
    * * Dot clock
      * 15.6672 MHz
+     * 30.24 MHz
      * 30.24 MHz
      * 57.2832 MHz
      * 100 MHz
@@ -182,49 +188,59 @@ yielding 8 (2³) possible combinations:
      * 512px
      * 640px
      * 640px
+     * 640px
      * 1152px
    * * Total width
      * 640px
+     * 864px
      * 864px
      * 832px
      * 1456
    * * HBlank
      * 128px
      * 224px
+     * 224px
      * 192px
      * 304px
    * * Front porch
      * 16px
+     * 64px
      * 64px
      * 32px
      * 32px
    * * HSync
      * 32px
      * 64px
+     * 64px
      * 80px
      * 128px
    * * Back porch
      * 80px
      * 96px
+     * 96px
      * 80px
      * 144px
    * * Height
      * 384px
+     * 400px
      * 480px
      * 870px
      * 870px
    * * Total height
      * 407px
      * 525px
+     * 525px
      * 918px
      * 915px
    * * VBlank
      * 32px
+     * 125px
      * 45px
      * 48px
      * 45px
    * * Front porch
      * 1px
+     * 43px
      * 3px
      * 3px
      * 3px
@@ -233,13 +249,19 @@ yielding 8 (2³) possible combinations:
      * 3px
      * 3px
      * 3px
+     * 3px
    * * Back porch
      * 19px
+     * 79px
      * 39px
      * 42px
      * 39px
 
 .. [#iigs] Was the IIgs the first to use DA-15, though?
+.. [#16bit] This is an alternate version of 640×480 available on some
+   machines with low amounts of VRAM, allowing 16-bit color at the cost
+   of screen space. The parameters are the same as 640×480, letterboxing
+   it by adding 40px each to the front and back porch.
 .. [#portrait] saragossa.net lists both “Apple” and “Color” (e.g.
    Radius) versions with different sense codes. I don’t know what
    differences exist.
@@ -346,64 +368,50 @@ Appendix: Apple IIe
 ~~~~~~~~~~~~~~~~~~~
 
 Machines that can host an Apple IIe card are capable of outputting
-non-Macintosh resolutions:
+560×384, which is double the IIe’s 280×192 “Hi Resolution” graphics
+mode:
 
 .. list-table::
    :widths: auto
    :header-rows: 1
    :stub-columns: 1
 
+   * * Size
+     * Quad Hi-Res
    * * Visible area
      * 560×384
-     * 640×400
    * * Total area
      * 704×407
-     * 864×525
    * * Scan rate
      * 60.15 Hz
-     * 66.67 Hz
    * * Line rate
      * 24.48 kHz
-     * 35.0 kHz
    * * Dot clock
      * 17.2340 MHz
-     * 30.24 MHz
    * * Width
      * 560px
-     * 640px
    * * Total width
      * 704px
-     * 864px
    * * HBlank
      * 144px
-     * 224px
    * * Front porch
      * 16px
-     * 64px
    * * HSync
      * 48px
-     * 64px
    * * Back porch
      * 80px
-     * 96px
    * * Height
      * 384px
-     * 400px
    * * Total height
      * 407px
-     * 525px
    * * VBlank
      * 23px
-     * 125px
    * * Front porch
      * 1px
-     * 43px
    * * VSync
-     * 3px
      * 3px
    * * Back porch
      * 19px
-     * 79px
 
 See Also
 --------
