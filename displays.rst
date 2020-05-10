@@ -233,7 +233,7 @@ yielding 8 (2³) possible combinations:
      * 918px
      * 915px
    * * VBlank
-     * 32px
+     * 23px
      * 125px
      * 45px
      * 48px
@@ -420,7 +420,7 @@ mode. It shares its vertical parameters with the standard Macintosh
      * 407px
      * 407px
    * * VBlank
-     * 32px
+     * 23px
      * 23px
    * * Front porch
      * 1px
