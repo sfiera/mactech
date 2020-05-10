@@ -369,7 +369,8 @@ Appendix: Apple IIe
 
 Machines that can host an Apple IIe card are capable of outputting
 560×384, which is double the IIe’s 280×192 “Hi Resolution” graphics
-mode:
+mode. It shares its vertical parameters with the standard Macintosh
+512×384 mode, but runs with a faster dot clock.
 
 .. list-table::
    :widths: auto
@@ -377,40 +378,58 @@ mode:
    :stub-columns: 1
 
    * * Size
+     * 12”
      * Quad Hi-Res
    * * Visible area
+     * 512×384
      * 560×384
    * * Total area
+     * 640×407
      * 704×407
    * * Scan rate
      * 60.15 Hz
+     * 60.15 Hz
    * * Line rate
      * 24.48 kHz
+     * 24.48 kHz
    * * Dot clock
+     * 15.6672 MHz
      * 17.2340 MHz
    * * Width
+     * 512px
      * 560px
    * * Total width
+     * 640px
      * 704px
    * * HBlank
+     * 128px
      * 144px
    * * Front porch
      * 16px
+     * 16px
    * * HSync
+     * 32px
      * 48px
    * * Back porch
      * 80px
+     * 80px
    * * Height
+     * 384px
      * 384px
    * * Total height
      * 407px
+     * 407px
    * * VBlank
+     * 32px
      * 23px
    * * Front porch
      * 1px
+     * 1px
    * * VSync
      * 3px
+     * 3px
    * * Back porch
+     * 19px
      * 19px
 
 Adapters
