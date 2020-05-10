@@ -161,7 +161,7 @@ yielding 8 (2³) possible combinations:
      * 640×870
      * 1152×870
    * * Total area
-     * 704×370
+     * 640×407
      * 864×525
      * 864×525
      * 832×918
