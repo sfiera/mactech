@@ -56,10 +56,10 @@ Configurations
    110         Apple Portrait  640×870          G=7=10       Macintosh Portrait Display
    ----------  --------------  ---------------  -----------  ------------------------------
    000000      PAL Encoder     512×384          4=7=10       European TV [#pal]_
-   010100      NTSC Encoder    512×384          1=2, 2→0     American TV [#ntsc]_
+   010100      NTSC Encoder    512×384          7=10, 10→4   American TV [#ntsc]_
    010111      VGA             800×600 [#vga]_  7=10         Non-Apple monitor
    101101      16”             832×624          4=10
-   110000      PAL Monitor     512×384          0=1, 2→0     European TV [#pal]_
+   110000      PAL Monitor     512×384          4=7, 10→4    European TV [#pal]_
    111010      19”             1024×768         4=7
    ----------  --------------  ---------------  -----------  ------------------------------
    110-101011  Up to 13”       Up to 640×480    G=4          (same as 12” above)
