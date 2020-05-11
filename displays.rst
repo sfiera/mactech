@@ -1,6 +1,13 @@
 Mac Tech: Displays
 ==================
 
+.. warning::
+
+   *  Don’t operate a display with parameters (resolution, scan rate, etc.) it wasn’t designed for.
+   *  Don’t open an analog display unless you have training on discharging the CRT inside.
+
+   Be careful. Improper electrical work can damage electronics, or you.
+
 .. contents::
 
 Summary
