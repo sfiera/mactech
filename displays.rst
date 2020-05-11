@@ -166,6 +166,11 @@ These configurations are identified by a three bit sense code ``ABC``:
      * 13” [#640x400]_
      * Portrait
      * 21”
+   * * Sense codes
+     * 101
+     * 110
+     * 101, 110
+     * 000, 011
    * * Visible area
      * 512×384
      * 640×480
@@ -297,6 +302,9 @@ are unassigned)
    * * Size
      * 16”
      * 19”
+   * * Sense codes
+     * 101101
+     * 111010
    * * Visible area
      * 832×624
      * 1024×768
