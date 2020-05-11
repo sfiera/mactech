@@ -279,6 +279,9 @@ These configurations are identified by a six bit sense code ``ABCDEF``:
 * E=0 if grounding sense 0 would pull sense 2 low
 * F=0 if grounding sense 0 would pull sense 1 low
 
+(note that there are 29 possible Type-7 sense codes, not 64, and most
+are unassigned)
+
 .. list-table::
    :widths: auto
    :header-rows: 1
@@ -345,13 +348,12 @@ Extended Type-6 sense codes
 Eventually displays became able to support multiple resolutions. The
 minimum resolution supported by such displays was 640×480, so the 13”
 sense code (grounding pin 4) became the baseline for multiple-resolution
-displays, so that older computers would detect them as 640×480 displays.
-Then, diodes were wired between pins 7 and 10:
+displays. Older computers would detect multiple scan monitors as 640×480
+displays. For larger resolutions, pins 7 and 10 were connected:
 
-1. No diodes for a 13” (640×480), preserving compatibility [#compat]_
-2. Both directions for a 14” (max 832×624) [#both]_
-3. From 7 to 10 for a 17” (max 1024×768)
-4. From 10 to 7 for a 21” (max 1152×870)
+1. Directly for 14” (max 832×624) [#both]_
+2. With a diode from 7 to 10 for 17” (max 1024×768)
+3. With a diode from 10 to 7 for 21” (max 1152×870)
 
 These configurations are identified by a nine-bit sense code: three bits
 indicating which pins are grounded (always 110 in practice) plus a six
@@ -360,10 +362,9 @@ bit Type-7 sense code.
 .. [#compat] Though, older displays would probably require a 66.67 Hz
    scan rate, so I don’t know if it would be safe to output a different
    rate.
-.. [#both] This is how my VGA adapter works, but I suspect that’s just
-   because it’s easy to set up with the dip switches assigned to the 17”
-   and 21” modes. It would probably be fine to wire the pins together,
-   without any diodes.
+.. [#both] VGA adapters may handle this by connecting a diode in both
+   directions. This is fine. It’s convenient when such adapters already
+   have dip switches to diodes for the larger resolutions.
 
 Appendix: Apple IIe
 ~~~~~~~~~~~~~~~~~~~
