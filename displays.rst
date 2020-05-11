@@ -453,8 +453,8 @@ For a multi-scan adapter:
 3. Connect Sense1 and Sense2 (DA-15 pins 7 and 10) according to the
    maximum resolution of the display:
 
-   * 1152×870: cathode on Sense1 (DA-15 pin 7)
-   * 1024×768: cathode on Sense2 (DA-15 pin 10)
+   * 1152×870: diode with cathode on Sense1 (DA-15 pin 7)
+   * 1024×768: diode with cathode on Sense2 (DA-15 pin 10)
    * 832×624: wire pins together directly
    * 640×480: no diodes
 
