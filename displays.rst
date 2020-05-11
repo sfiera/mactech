@@ -26,9 +26,9 @@ Pinout
    VSync signal       12    14
    CSync signal       3     NC
    VSync/CSync ground 11    10
-   Sense pin          4     NC
-   Sense pin          7     NC
-   Sense pin          10    NC
+   Sense 0            4     NC
+   Sense 1            7     NC
+   Sense 2            10    NC
    Unused             8     NC
    Chassis ground     Shell Shell
    ================== ===== =====
@@ -36,46 +36,55 @@ Pinout
 I’ve seen schematics with the RGB grounds (pins 1, 6, and 13) wired to
 the shell, and observed this in an adapter in practice.
 
-Sense pins
-~~~~~~~~~~
+Configurations
+~~~~~~~~~~~~~~
 
 .. table::
    :widths: auto
 
-   ====  ==============  ===============  ================  ==============================
-   Gen.  Mode            Resolution       Connections       Example
-   ====  ==============  ===============  ================  ==============================
-   1     8”              512×342          N/A               Macintosh 128k internal
-   2     12”             512×384          G↔︎4↔︎10            Macintosh 12″ RGB Display
-   2     NTSC [#ntsc]_   512×384          G↔︎4↔︎7             North American TV
-   2     13”             640×480          G↔︎4               AppleColor High-Resolution RGB Monitor
-   2     Apple Portrait  640×870          G↔︎7↔︎10            Macintosh Portrait Display
-   2     Color Portrait  640×870          G↔︎7               Radius Full Page Display
-   2     21” Mono        1152×870         G↔︎10
-   2     21” Color       1152×870         G↔︎4↔︎7↔︎10
-   3     VGA [#vga]_     800×600          7↔︎10              Non-Apple monitor
-   3     16”             832×624          4↔︎10
-   3     19”             1024×768         4↔︎7
-   3     PAL [#pal]_     512×384          4↔︎7↔︎10           European TV
-   4     Up to 13”       Up to 640×480    G↔︎4              (same as 12” above)
-   4     Up to 14”       Up to 800×600    G↔︎4, 7→10, 10→7  Apple Multiple Scan 14 Display
-   4     Up to 17”       Up to 1024×768   G↔︎4, 7→10        Apple Multiple Scan 15 Display
-   4     Up to 21”       Up to 1152×870?  G↔︎4, 10→7        Apple Multiple Scan 20 Display
-   ====  ==============  ===============  ================  ==============================
+   ==========  ==============  ===============  ===========  ==============================
+   Code        Mode            Resolution       Wiring       Example
+   ==========  ==============  ===============  ===========  ==============================
+   N/A         8”              512×342          N/A          Macintosh 128k internal
+   ----------  --------------  ---------------  -----------  ------------------------------
+   000         21” Color       1152×870         G=4=7=10
+   011         21” Mono        1152×870         G=10
+   011         NTSC Monitor    512×384          G=4=7        American TV [#ntsc]_
+   101         12”             512×384          G=4=10       Macintosh 12″ RGB Display
+   101         Color Portrait  640×870          G=7          Radius Full Page Display
+   110         13”             640×480          G=4          AppleColor High-Resolution RGB Monitor
+   110         Apple Portrait  640×870          G=7=10       Macintosh Portrait Display
+   ----------  --------------  ---------------  -----------  ------------------------------
+   000000      PAL Encoder     512×384          4=7=10       European TV [#pal]_
+   010100      NTSC Encoder    512×384          1=2, 2→0     American TV [#ntsc]_
+   010111      VGA             800×600 [#vga]_  7=10         Non-Apple monitor
+   101101      16”             832×624          4=10
+   110000      PAL Monitor     512×384          0=1, 2→0     European TV [#pal]_
+   111010      19”             1024×768         4=7
+   ----------  --------------  ---------------  -----------  ------------------------------
+   110-101011  Up to 13”       Up to 640×480    G=4          (same as 12” above)
+   110-000011  Up to 14”       Up to 800×600    G=4, 7=10    Apple Multiple Scan 14 Display
+   110-001011  Up to 17”       Up to 1024×768   G=4, 7→10    Apple Multiple Scan 15 Display
+   110-100011  Up to 21”       Up to 1152×870?  G=4, 10→7    Apple Multiple Scan 20 Display
+   ----------  --------------  ---------------  -----------  ------------------------------
+   111-111111  No display                       None
+   ==========  ==============  ===============  ===========  ==============================
 
-.. [#ntsc] Overscan 640×480; underscan 512×384.
+.. [#ntsc] Overscan 640×480; underscan 512×384. I don’t know what the
+   difference between a “NTSC Encoder” and a “NTSC Monitor” is.
 .. [#vga] Defaults to 640×480; change to 800×600 and restart.
-.. [#pal] Overscan 640×480; underscan 512×384. saragossa.net Also lists
-   a second PAL option, connecting 4↔︎7, 7→10, but does not say what the
-   difference from the mode listed above is.
+.. [#pal] Overscan 640×480; underscan 512×384. I don’t know what the
+   difference between a “PAL Encoder” and a “PAL Monitor” is.
 
 Details
 -------
 
-Generation 1: Compact Mac
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Compact Mac
+~~~~~~~~~~~
 
-The original Macintosh had a single resolution: 512×342.
+The original Macintosh had a single resolution: 512×342. This resolution
+remained unchanged on later black and white Macs: the Plus, SE, SE/30,
+and Classic. (The Color Classic is 512×384)
 
 .. list-table::
    :widths: auto
@@ -125,23 +134,20 @@ The original Macintosh had a single resolution: 512×342.
    so it overlaps the visible part of the scan line, and there is no
    back porch.
 
-Generation 2: External Displays
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sense codes
+~~~~~~~~~~~
 
-The Macintosh II required an external monitor, and connected to it
+The Macintosh II required an external display, and connected to it
 through a DA-15 video port [#iigs]_. Aside from the signal and ground
-pins, three `sense pins`_ were used so that the computer would know what
-kind of monitor was connected. Any or all of them could be grounded,
-yielding 8 (2³) possible combinations:
+pins, three sense pins were used so that the computer would know what
+kind of display was connected. Any or all of them could be grounded,
+identifying 8 possible configurations_.
 
-1. 13” (640×480)
-2. Color Portrait (640×870)
-3. NTSC (512×384)
-4. 21” Mono (1152×870)
-5. 12” (512×384)
-6. Apple Portrait (640×870)
-7. 21” Color (1152×870)
-8. No monitor connected
+These configurations are identified by a three bit sense code ``ABC``:
+
+* A=0 if sense 2 (pin 10) is grounded; A=1 if floating
+* B=0 if sense 1 (pin 7) is grounded; B=1 if floating
+* C=0 if sense 0 (pin 4) is grounded; C=1 if floating
 
 .. list-table::
    :widths: auto
@@ -150,37 +156,31 @@ yielding 8 (2³) possible combinations:
 
    * * Size
      * 12”
-     * 13” 16-bit [#16bit]_
-     * 13”
-     * Portrait [#portrait]_
-     * 21” [#21]_
+     * 13” [#640x400]_
+     * Portrait
+     * 21”
    * * Visible area
      * 512×384
-     * 640×400
      * 640×480
      * 640×870
      * 1152×870
    * * Total area
      * 640×407
      * 864×525
-     * 864×525
      * 832×918
      * 1456×915
    * * Scan rate
      * 60.15 Hz
      * 66.67 Hz
-     * 66.67 Hz
      * 75 Hz
      * 75 Hz
    * * Line rate
      * 24.48 kHz [#24.48]_
-     * 35.0 kHz
      * 35.00 kHz
      * 68.9 kHz
      * 68.68 kHz
    * * Dot clock
      * 15.6672 MHz
-     * 30.24 MHz
      * 30.24 MHz
      * 57.2832 MHz
      * 100 MHz
@@ -188,59 +188,49 @@ yielding 8 (2³) possible combinations:
      * 512px
      * 640px
      * 640px
-     * 640px
      * 1152px
    * * Total width
      * 640px
-     * 864px
      * 864px
      * 832px
      * 1456
    * * HBlank
      * 128px
      * 224px
-     * 224px
      * 192px
      * 304px
    * * Front porch
      * 16px
-     * 64px
      * 64px
      * 32px
      * 32px
    * * HSync
      * 32px
      * 64px
-     * 64px
      * 80px
      * 128px
    * * Back porch
      * 80px
      * 96px
-     * 96px
      * 80px
      * 144px
    * * Height
      * 384px
-     * 400px
      * 480px
      * 870px
      * 870px
    * * Total height
      * 407px
      * 525px
-     * 525px
      * 918px
      * 915px
    * * VBlank
      * 23px
-     * 125px
      * 45px
      * 48px
      * 45px
    * * Front porch
      * 1px
-     * 43px
      * 3px
      * 3px
      * 3px
@@ -249,43 +239,45 @@ yielding 8 (2³) possible combinations:
      * 3px
      * 3px
      * 3px
-     * 3px
    * * Back porch
      * 19px
-     * 79px
      * 39px
      * 42px
      * 39px
 
 .. [#iigs] Was the IIgs the first to use DA-15, though?
-.. [#16bit] This is an alternate version of 640×480 available on some
-   machines with low amounts of VRAM, allowing 16-bit color at the cost
-   of screen space. The parameters are the same as 640×480, letterboxing
-   it by adding 40px each to the front and back porch.
-.. [#portrait] saragossa.net lists both “Apple” and “Color” (e.g.
-   Radius) versions with different sense codes. I don’t know what
-   differences exist.
-.. [#21] saragossa.net lists both “Mono” and “Color” versions with
-   different sense codes. I don’t know what differences exist.
+.. [#640x400] Some machines with low amounts of VRAM support a “640×400”
+   mode, allowing 16-bit color at the cost of screen space. The
+   parameters are the same as 640×480, letterboxing it by adding 40px
+   each to the front and back porch.
 .. [#24.48] While this resolution shares the overall scan rate (60.15
    Hz) and dot clock (15.6672) with the Compact 8” resolution, the
    line rate differs. Despite having the same total pixel size, the
    total area is more squarish. Reusing the 8” screen’s parameters would
    have been impossible, because its total height is less than 384px.
 
-Generation 3: More Displays
+Extended Type-7 sense codes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 With more resolutions, new sense codes were needed. In order to prevent
-older computers from detecting these newer monitors and trying to
-display to them, the three sense pins were left ungrounded, and some
-combination of them were tied together, yielding 4 additional
-possibilities:
+older computers from detecting these newer displays and trying to
+display to them, the three sense pins were left ungrounded (which
+indicates “no display attached” to older computers), and some
+combination of the sense pins were tied together, either directly or
+with diodes. To detect the display, the computer would:
 
-1. 19” (1024×768)
-2. VGA (640×480 or 800×600)
-3. 16” (832×624)
-4. PAL
+1. Check if any sense pins are grounded (indicating a non-extended code)
+2. Ground each sense pin in turn, checking which other pins were pulled
+   low in response.
+
+These configurations are identified by a six bit sense code ``ABCDEF``:
+
+* A=0 if grounding sense 2 (pin 10) would pull sense 1 (pin 7) low
+* B=0 if grounding sense 2 would pull sense 0 (pin 4) low
+* C=0 if grounding sense 1 would pull sense 2 low
+* D=0 if grounding sense 1 would pull sense 0 low
+* E=0 if grounding sense 0 would pull sense 2 low
+* F=0 if grounding sense 0 would pull sense 1 low
 
 .. list-table::
    :widths: auto
@@ -347,22 +339,31 @@ possibilities:
      * 39px
      * 30px
 
-Generation 4: Multi-resolution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Extended Type-6 sense codes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Eventually monitors became able to support multiple resolutions. The
-minimum resolution supported by such monitors was 640×480, so the 13”
+Eventually displays became able to support multiple resolutions. The
+minimum resolution supported by such displays was 640×480, so the 13”
 sense code (grounding pin 4) became the baseline for multiple-resolution
-monitors. Then, diodes were wired between pins 7 and 10:
+displays, so that older computers would detect them as 640×480 displays.
+Then, diodes were wired between pins 7 and 10:
 
 1. No diodes for a 13” (640×480), preserving compatibility [#compat]_
-2. Both directions for a 14” (max 800×600)
+2. Both directions for a 14” (max 832×624) [#both]_
 3. From 7 to 10 for a 17” (max 1024×768)
 4. From 10 to 7 for a 21” (max 1152×870)
 
-.. [#compat] Though, older monitors would probably require a 66.67 Hz
+These configurations are identified by a nine-bit sense code: three bits
+indicating which pins are grounded (always 110 in practice) plus a six
+bit Type-7 sense code.
+
+.. [#compat] Though, older displays would probably require a 66.67 Hz
    scan rate, so I don’t know if it would be safe to output a different
    rate.
+.. [#both] This is how my VGA adapter works, but I suspect that’s just
+   because it’s easy to set up with the dip switches assigned to the 17”
+   and 21” modes. It would probably be fine to wire the pins together,
+   without any diodes.
 
 Appendix: Apple IIe
 ~~~~~~~~~~~~~~~~~~~
@@ -450,7 +451,7 @@ For a multi-scan adapter:
 1. Omit the dip switches.
 2. Wire VGAGnd and Sense0 (D-15 pin 4 and ground) together directly.
 3. Wire diodes between Sense1 and Sense2 (DA-15 pins 7 and 10) according
-   to the maximum resolution of the monitor:
+   to the maximum resolution of the display:
 
    * 1152×870: cathode on Sense1 (DA-15 pin 7)
    * 1024×768: cathode on Sense2 (DA-15 pin 10)
@@ -460,6 +461,7 @@ For a multi-scan adapter:
 See Also
 --------
 
+* http://mirror.informatimago.com/next/developer.apple.com/technotes/hw/pdf/hw_30.pdf
 * http://www.saragossa.net/intfcing.html
 * http://www.codesrc.com/mediawiki/index.php/Macintosh_VGA
 * http://www.3dexpress.de/displayconfigx/timings.html
