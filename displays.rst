@@ -359,9 +359,6 @@ These configurations are identified by a nine-bit sense code: three bits
 indicating which pins are grounded (always 110 in practice) plus a six
 bit Type-7 sense code.
 
-.. [#compat] Though, older displays would probably require a 66.67 Hz
-   scan rate, so I don’t know if it would be safe to output a different
-   rate.
 .. [#both] VGA adapters may handle this by connecting a diode in both
    directions. This is fine. It’s convenient when such adapters already
    have dip switches to diodes for the larger resolutions.
