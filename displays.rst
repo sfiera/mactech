@@ -453,6 +453,7 @@ Generic adapter
 ~~~~~~~~~~~~~~~
 
 .. image:: images/display-adapter.svg
+   :width: 100%
 
 For a VGA adapter:
 
