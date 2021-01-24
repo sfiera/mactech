@@ -378,8 +378,8 @@ bit Type-7 sense code.
    directions. This is fine. It’s convenient when such adapters already
    have dip switches to diodes for the larger resolutions.
 
-Appendix: Apple IIe
-~~~~~~~~~~~~~~~~~~~
+Appendix A: Apple IIe
+~~~~~~~~~~~~~~~~~~~~~
 
 Machines that can host an Apple IIe card are capable of outputting
 560×384, which is double the IIe’s 280×192 “Hi Resolution” graphics
@@ -445,6 +445,90 @@ mode. It shares its vertical parameters with the standard Macintosh
    * * Back porch
      * 19px
      * 19px
+
+Appendix B: VGA Timing
+~~~~~~~~~~~~~~~~~~~~~~
+
+For comparison, here are the standard timings for VGA resolutions at 60
+Hz:
+
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+   :stub-columns: 1
+
+   * * Size
+     * VGA
+     * SVGA
+     * XGA
+   * * Visible area
+     * 640×480
+     * 800×600
+     * 1024×768
+   * * Total area
+     * 800×525
+     * 1056×628
+     * 1344×806
+   * * Scan rate
+     * 60 Hz
+     * 60 Hz
+     * 60 Hz
+   * * Line rate
+     * 31.46875 kHz
+     * 37.8787… kHz
+     * 48.3630… kHz
+   * * Dot clock
+     * 25.175 MHz
+     * 40 MHz
+     * 65 MHz
+   * * Width
+     * 640px
+     * 800px
+     * 1024px
+   * * Total width
+     * 800px
+     * 1056px
+     * 1344px
+   * * HBlank
+     * 160px
+     * 256px
+     * 320px
+   * * Front porch
+     * 16px
+     * 40px
+     * 24px
+   * * HSync
+     * 96px
+     * 128px
+     * 136px
+   * * Back porch
+     * 48px
+     * 88px
+     * 160px
+   * * Height
+     * 480px
+     * 600px
+     * 768px
+   * * Total height
+     * 525px
+     * 628px
+     * 806px
+   * * VBlank
+     * 45px
+     * 28px
+     * 38px
+   * * Front porch
+     * 10px
+     * 1px
+     * 3px
+   * * VSync
+     * 2px
+     * 4px
+     * 6px
+   * * Back porch
+     * 33px
+     * 23px
+     * 29px
 
 Adapters
 --------
