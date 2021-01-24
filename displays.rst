@@ -69,7 +69,7 @@ Configurations
    110000      PAL Monitor     512×384          4=7, 10→4    European TV [#pal]_
    111010      19”             1024×768         4=7
    ----------  --------------  ---------------  -----------  ------------------------------
-   110-101011  Up to 13”       Up to 640×480    G=4          (same as 12” above)
+   110-101011  Up to 13”       Up to 640×480    G=4          (same as 13” above)
    110-000011  Up to 14”       Up to 800×600    G=4, 7=10    Apple Multiple Scan 14 Display
    110-001011  Up to 17”       Up to 1024×768   G=4, 7→10    Apple Multiple Scan 15 Display
    110-100011  Up to 21”       Up to 1152×870?  G=4, 10→7    Apple Multiple Scan 20 Display
