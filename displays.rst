@@ -55,12 +55,12 @@ Configurations
    N/A         8”              512×342          N/A          Macintosh 128k internal
    ----------  --------------  ---------------  -----------  ------------------------------
    000         21” Color       1152×870         G=4=7=10
+   001         Apple Portrait  640×870          G=7=10       Macintosh Portrait Display
+   010         12”             512×384          G=4=10       Macintosh 12″ RGB Display
    011         21” Mono        1152×870         G=10
-   011         NTSC Monitor    512×384          G=4=7        American TV [#ntsc]_
-   101         12”             512×384          G=4=10       Macintosh 12″ RGB Display
+   100         NTSC Monitor    512×384          G=4=7        American TV [#ntsc]_
    101         Color Portrait  640×870          G=7          Radius Full Page Display
    110         13”             640×480          G=4          AppleColor High-Resolution RGB Monitor
-   110         Apple Portrait  640×870          G=7=10       Macintosh Portrait Display
    ----------  --------------  ---------------  -----------  ------------------------------
    000000      PAL Encoder     512×384          4=7=10       European TV [#pal]_
    010100      NTSC Encoder    512×384          7=10, 10→4   American TV [#ntsc]_
