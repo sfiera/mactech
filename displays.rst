@@ -145,10 +145,10 @@ Sense codes
 ~~~~~~~~~~~
 
 The Macintosh II required an external display, and connected to it
-through a DA-15 video port [#iigs]_. Aside from the signal and ground
-pins, three sense pins were used so that the computer would know what
-kind of display was connected. Any or all of them could be grounded,
-identifying 8 possible configurations_.
+through a DA-15 video port. Aside from the signal and ground pins, three
+sense pins were used so that the computer would know what kind of
+display was connected. Any or all of them could be grounded, identifying
+8 possible configurations_.
 
 These configurations are identified by a three bit sense code ``ABC``:
 
@@ -257,7 +257,6 @@ These configurations are identified by a three bit sense code ``ABC``:
      * 42px
      * 39px
 
-.. [#iigs] Was the IIgs the first to use DA-15, though?
 .. [#640x400] Some machines with low amounts of VRAM support a “640×400”
    mode, allowing 16-bit color at the cost of screen space. The
    parameters are the same as 640×480, letterboxing it by adding 40px
