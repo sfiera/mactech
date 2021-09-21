@@ -62,12 +62,12 @@ Configurations
    101         Color Portrait  640×870          G=7          Radius Full Page Display
    110         13”             640×480          G=4          AppleColor High-Resolution RGB Monitor
    ----------  --------------  ---------------  -----------  ------------------------------
-   000000      PAL Encoder     512×384          4=7=10       European TV [#pal]_
-   010100      NTSC Encoder    512×384          7=10, 10→4   American TV [#ntsc]_
-   010111      VGA             800×600 [#vga]_  7=10         Non-Apple monitor
-   101101      16”             832×624          4=10
-   110000      PAL Monitor     512×384          4=7, 10→4    European TV [#pal]_
-   111010      19”             1024×768         4=7
+   111-000000  PAL Encoder     512×384          4=7=10       European TV [#pal]_
+   111-010100  NTSC Encoder    512×384          7=10, 10→4   American TV [#ntsc]_
+   111-010111  VGA             800×600 [#vga]_  7=10         Non-Apple monitor
+   111-101101  16”             832×624          4=10
+   111-110000  PAL Monitor     512×384          4=7, 10→4    European TV [#pal]_
+   111-111010  19”             1024×768         4=7
    ----------  --------------  ---------------  -----------  ------------------------------
    110-101011  Up to 13”       Up to 640×480    G=4          (same as 13” above)
    110-000011  Up to 14”       Up to 800×600    G=4, 7=10    Apple Multiple Scan 14 Display
@@ -150,7 +150,7 @@ sense pins were used so that the computer would know what kind of
 display was connected. Any or all of them could be grounded, identifying
 8 possible configurations_.
 
-These configurations are identified by a three bit sense code ``ABC``:
+These configurations are identified by a 3-bit sense code ``ABC``:
 
 * A=0 if sense 2 (pin 10) is grounded; A=1 if floating
 * B=0 if sense 1 (pin 7) is grounded; B=1 if floating
@@ -281,8 +281,10 @@ with diodes. To detect the display, the computer would:
 2. Ground each sense pin in turn, checking which other pins were pulled
    low in response.
 
-These configurations are identified by a six bit sense code ``ABCDEF``:
+These configurations are identified by a 9-bit sense code
+``111-ABCDEF``:
 
+* 111, indicating the basic sense code, which is 7 in binary
 * A=0 if grounding sense 2 (pin 10) would pull sense 1 (pin 7) low
 * B=0 if grounding sense 2 would pull sense 0 (pin 4) low
 * C=0 if grounding sense 1 would pull sense 2 low
@@ -361,17 +363,20 @@ Extended Type-6 sense codes
 
 Eventually displays became able to support multiple resolutions. The
 minimum resolution supported by such displays was 640×480, so the 13”
-sense code (grounding pin 4) became the baseline for multiple-resolution
-displays. Older computers would detect multiple scan monitors as 640×480
-displays. For larger resolutions, pins 7 and 10 were connected:
+sense code 110 (grounding pin 4) became the baseline for
+multiple-resolution displays. Older computers would detect multiple scan
+monitors as 640×480 displays. For larger resolutions, pins 7 and 10 were
+connected:
 
 1. Directly for 14” (max 832×624) [#both]_
 2. With a diode from 7 to 10 for 17” (max 1024×768)
 3. With a diode from 10 to 7 for 21” (max 1152×870)
 
-These configurations are identified by a nine-bit sense code: three bits
-indicating which pins are grounded (always 110 in practice) plus a six
-bit Type-7 sense code.
+These configurations are identified by a 9-bit sense code
+``110-ABCDEF``:
+
+* 110, indicating the basic sense code, which is 6 in binary
+* ABCDEF using the same method as Type-7 sense codes
 
 .. [#both] VGA adapters may handle this by connecting a diode in both
    directions. This is fine. It’s convenient when such adapters already
