@@ -167,9 +167,9 @@ These configurations are identified by a three bit sense code ``ABC``:
      * Portrait
      * 21”
    * * Sense codes
-     * 101
+     * 010
      * 110
-     * 101, 110
+     * 101, 001
      * 000, 011
    * * Visible area
      * 512×384
