@@ -40,8 +40,8 @@ Pinout
    Chassis ground     Shell Shell
    ================== ===== =====
 
-I’ve seen schematics with the RGB grounds (pins 1, 6, and 13) wired to
-the shell, and observed this in an adapter in practice.
+I’ve seen schematics with all the grounds (pins 1, 6, 11, 13, and 14)
+wired to the shell, and observed this in an adapter in practice.
 
 Configurations
 ~~~~~~~~~~~~~~
